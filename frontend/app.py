@@ -432,8 +432,7 @@ with col_input:
     topic = st.text_area(
         "Research Topic",
         placeholder="e.g. Impact of AI on software engineering productivity",
-        height=100,
-        key="topic_input"
+        height=100
     )
 
     research_btn = st.button(
@@ -455,9 +454,8 @@ with col_examples:
     ]
 
     for ex in examples:
-        if st.button(ex, key=f"example_{ex}"):
-            st.session_state.topic_input = ex
-            st.rerun()
+        if st.button(ex, key=f"example_{ex}", use_container_width=True):
+            topic = ex
 
 # ──────────────────────────────────────────────────────────────
 # ✅ RUN PIPELINE
@@ -600,6 +598,9 @@ if st.session_state.research_result:
     st.divider()
     
     # NEW RESEARCH BUTTON
-    if st.button("🔄 Start New Research", use_container_width=True):
-        st.session_state.research_result = None
-        st.rerun()
+    col_new = st.columns([1, 2, 1])[0]
+    with col_new:
+        if st.button("🔄 Start New Research", use_container_width=True):
+            st.session_state.research_result = None
+            time.sleep(1)
+            st.rerun()
