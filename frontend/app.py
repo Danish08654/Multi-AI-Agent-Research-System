@@ -86,7 +86,7 @@ Format your response as a detailed outline. Be specific and actionable."""
 
     try:
         message = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="openai/gpt-oss-20b",
             max_tokens=2000,
             messages=[{"role": "user", "content": prompt}]
         )
