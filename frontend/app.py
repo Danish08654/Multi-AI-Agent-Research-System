@@ -199,7 +199,7 @@ Be detailed and insightful. Structure your analysis clearly."""
 
     try:
         message = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="openai/gpt-oss-20b",
             max_tokens=3000,
             messages=[{"role": "user", "content": prompt}]
         )
